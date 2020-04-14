@@ -3,6 +3,9 @@ let v1: number = 0;
 let v2: string = "hola mundo";
 let v3: boolean = true;
 
+let array1:Array<any> = [54565,"hola"];
+
+
 function Numerica(x: number, y: number): number | null {
   let r: number = x + y;
 
@@ -23,4 +26,11 @@ function CalcularEdadCasarse() {
   );
 
   const EUsuario: number = Number(edadUsuario.value);
+  let resultado: number = EUsuario + 20;
+
+  const resAlerta: HTMLDivElement = <HTMLDivElement>(
+    document.querySelector("#resultado")
+  );
+
+  resAlerta.innerText = `Te vas a casar cuando tengas ${resultado}`;
 }
