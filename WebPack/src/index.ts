@@ -1,1 +1,3 @@
-console.log('funciono');
+
+import './../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import './temas_base/TipadoDatos'
