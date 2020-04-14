@@ -15,6 +15,10 @@ console.log(NumeroRandom);
 
 const n1: number = 11;
 
-let numeroObtenido = n1 == 5 ? "Cinco" : null;
+let numeroObtenido = 
+ n1 == 5 ? "Cinco" :
+ n1 == 7 ? 'Siete':
+ n1 ==1 ? 'Once':
+ 'Es otro numero';
 console.log(numeroObtenido);
 
