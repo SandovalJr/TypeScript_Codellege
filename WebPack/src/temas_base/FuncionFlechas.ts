@@ -42,4 +42,40 @@ console.log(ArrowFunction(10, 5));
 
 /*****
 Metodos array funcion de flecha
+
+1-ForEach
+2-Map
+3-Find
+4-Filter
 ******/
+
+let ArrayNumber: Array<number> = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// Es lo mismo que poner un for y que se repita el numero de datos que tenga el array
+// el for echa recorre el array y aplicarle alguna accion
+// a cada elemento le aplica una accion
+// ArrayNumber.forEach((elemento) =>
+//   elemento % 2 == 0
+//     ? console.log("par" + elemento)
+//     : console.log("impar" + elemento)
+// );
+
+/*****
+Map 
+Es similar al forEach ya que por cada valor en el array se aplica una accion , la diferencia 
+es que map nos crea un array nuevo y forEach
+******/
+
+let arrayNuevo: any = [];
+
+arrayNuevo = ArrayNumber.map((elemento) =>
+  elemento % 2 == 0 ? "par" : "impar"
+);
+
+//   if (elemento % 2 == 0) {
+//     return elemento;
+//   }else{
+//       return 'impar-'
+//   }
+
+console.log(arrayNuevo);
