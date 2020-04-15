@@ -38,7 +38,7 @@ const ArrowFunction = (x: number, y: number) => {
   return x + y;
 };
 
-console.log(ArrowFunction(10, 5));
+// console.log(ArrowFunction(10, 5));
 
 /*****
 Metodos array funcion de flecha
@@ -66,11 +66,11 @@ Es similar al forEach ya que por cada valor en el array se aplica una accion , l
 es que map nos crea un array nuevo y forEach
 ******/
 
-let arrayNuevo: any = [];
+// let arrayNuevo: any = [];
 
-arrayNuevo = ArrayNumber.map((elemento) =>
-  elemento % 2 == 0 ? "par" : "impar"
-);
+// arrayNuevo = ArrayNumber.map((elemento) =>
+//   elemento % 2 == 0 ? "par" : "impar"
+// );
 
 //   if (elemento % 2 == 0) {
 //     return elemento;
@@ -78,4 +78,59 @@ arrayNuevo = ArrayNumber.map((elemento) =>
 //       return 'impar-'
 //   }
 
-console.log(arrayNuevo);
+// console.log(arrayNuevo);
+
+/*****
+Find
+
+encuentra un valor dentro de un arreglo y nos comparte el nuevo valor
+
+un json es un array de objetos (java script object notation)
+******/
+let personas: Array<any> = [
+  {
+    id: 1,
+    nombre: "Sandoval",
+    sexo: "Masculino",
+  },
+  {
+    id: 2,
+    nombre: "chino",
+    sexo: "Masculino",
+  },
+  {
+    id: 3,
+    nombre: "daniela",
+    sexo: "Femenino",
+  },
+];
+
+// let persona = personas.find((elemento) => elemento.id == 2);
+// console.log(persona);
+
+/*****
+
+Filter
+
+Encuentra varios valores y regresa un array con ellos
+******/
+
+let PersonasMasculinas = personas.filter(
+  (persona) => persona.sexo == "Masculino"
+);
+
+console.log(PersonasMasculinas);
+
+/*****
+SOME
+
+Encuentra un valor dentro de un array y nos rgeresa un true or false
+
+true == existe valor 
+false == no existe valor
+******/
+
+let e = personas.some(
+  (persona) => persona.id == 2 && persona.nombre == "chino"
+);
+console.log(e);
