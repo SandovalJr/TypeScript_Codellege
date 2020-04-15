@@ -15,10 +15,15 @@ console.log(NumeroRandom);
 
 const n1: number = 11;
 
-let numeroObtenido = 
- n1 == 5 ? "Cinco" :
- n1 == 7 ? 'Siete':
- n1 ==1 ? 'Once':
- 'Es otro numero';
+let numeroObtenido =
+  n1 == 5 ? "Cinco" : n1 == 7 ? "Siete" : n1 == 1 ? "Once" : "Es otro numero";
 console.log(numeroObtenido);
 
+
+
+// operadores restrictivos comparan que el tipo de dato y el contenido sean iguales
+let x: any = 7;
+let y: any = "7";
+
+
+x===y ? alert('es igual'): alert('no es igual')
