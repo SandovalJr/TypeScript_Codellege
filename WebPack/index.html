@@ -15,23 +15,39 @@
     <div class="container">
       <div class="jumbotron">
         <div class="form-group" id="PE1">
-          <label for="">Ingresa tu edad</label>
+          <label for="">Ingresa el nombre del usuario a eliminar</label>
           <input
             type="number"
             placeholder="Ingresa tu edad"
             class="form-control"
-            id="edadUsuario"
+            id="NombreUsuario"
           />
         </div>
 
         <div class="row">
           <div class="col-12">
-            <button class="btn btn-outline-primary btn-block" id="btnIniciar">Calcular</button>
+            <button class="btn btn-outline-danger btn-block" id="btnEjecutar">Eliminar</button>
           </div>
 
           <div class="col-12 mt-2">
-            <div class="alert alert-primary text-center" role="alert" id="resultado">
-            </div>
+<table class="table table-striped table-dark">
+  <thead class="text-center">
+    <tr>
+      <th>ID</th>
+      <th>NOMBRE</th>
+      <th>EDAD</th>
+      <th>SEXO</th>
+    </tr>
+  </thead>
+  <tbody id="tbody" class="text-center">
+    
+
+  </tbody>
+</table>
+
+
+
+          </div>
           </div>
         </div>
       </div>

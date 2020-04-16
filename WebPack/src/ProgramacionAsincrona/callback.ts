@@ -79,9 +79,31 @@ let Personas: Array<Persona> = [
     sexo: "F",
   },
   {
-    id: 2,
+    id: 5,
     nombre: "Maria Fernanda ",
     edad: 27,
     sexo: "F",
   },
 ];
+
+const button = document.querySelector("#btnEjecutar");
+button?.addEventListener("click", EliminarUsuarios);
+
+function EliminarUsuarios() {}
+
+function MostrarUsuarios() {
+  const tbody = document.querySelector("#tbody");
+  Personas.forEach((Persona) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+    <td>${Persona.id}</td>
+    <td> ${Persona.nombre}</td>
+    <td>  ${Persona.edad}</td>
+    <td>    ${Persona.sexo}</td>
+    `;
+
+    tbody?.appendChild(tr);
+  });
+}
+
+MostrarUsuarios();
