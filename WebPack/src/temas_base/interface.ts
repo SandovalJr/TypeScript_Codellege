@@ -1,5 +1,6 @@
 // La interfaz se usa para darle la estructura del documento
 export interface Persona {
+
   nombre: string;
   apellido: string;
   edad: number;

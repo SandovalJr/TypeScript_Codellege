@@ -1,3 +1,5 @@
+import { Persona } from "./interface";
+
 /*****
  Caracteristicas de los parametros de las funciones
 
@@ -87,23 +89,28 @@ encuentra un valor dentro de un arreglo y nos comparte el nuevo valor
 
 un json es un array de objetos (java script object notation)
 ******/
-let personas: Array<any> = [
+let personas: Array<Persona> = [
   {
-    id: 1,
     nombre: "Sandoval",
     sexo: "Masculino",
+    apellido: "Elias",
+    edad: 20,
   },
   {
-    id: 2,
     nombre: "chino",
+    apellido: "Perarlta",
     sexo: "Masculino",
+    edad: 22,
   },
   {
-    id: 3,
     nombre: "daniela",
+    apellido: "Estrada",
     sexo: "Femenino",
+    edad: 20,
   },
 ];
+
+console.log(personas);
 
 // let persona = personas.find((elemento) => elemento.id == 2);
 // console.log(persona);
@@ -130,7 +137,7 @@ true == existe valor
 false == no existe valor
 ******/
 
-let e = personas.some(
-  (persona) => persona.id == 2 && persona.nombre == "chino"
-);
-console.log(e);
+// let e = personas.some(
+//   (persona) => persona.id == 2 && persona.nombre == "chino"
+// );
+// console.log(e);
