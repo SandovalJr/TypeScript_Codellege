@@ -1,3 +1,4 @@
+import { Persona } from "../temas_base/interface";
 /*****
 USO BASICO DE CALLBACKS
 ******/
@@ -48,12 +49,39 @@ function MostrarResultado(res: number) {
 
 // sumacallback(3, 5, MostrarResultado);
 
-
-
 /*****
 USO INTERMEDIO CALLBACKS
 ******/
 
-
-
-
+let Personas: Array<Persona> = [
+  {
+    id: 1,
+    nombre: "Elias",
+    edad: 9,
+    sexo: "M",
+  },
+  {
+    id: 2,
+    nombre: "Manuel ",
+    edad: 26,
+    sexo: "M",
+  },
+  {
+    id: 3,
+    nombre: "Daniela ",
+    edad: 26,
+    sexo: "F",
+  },
+  {
+    id: 4,
+    nombre: "Laura ",
+    edad: 25,
+    sexo: "F",
+  },
+  {
+    id: 2,
+    nombre: "Maria Fernanda ",
+    edad: 27,
+    sexo: "F",
+  },
+];
