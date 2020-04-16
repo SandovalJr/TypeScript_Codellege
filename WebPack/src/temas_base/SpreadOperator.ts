@@ -1,3 +1,6 @@
+// para importar la interfaz de persona
+import { Persona } from "./interface";
+
 /*****
  * SPREAD ARRAY
 Operador de propagacion 
@@ -21,20 +24,13 @@ SPREAD OBJECTS
 con ? damos a entender que el dato que se enviara es opcional 
 ******/
 
-interface Persona {
-  nombre: string;
-  apellido: string;
-  edad: number;
-  sexo: string;
-  estatura?: number;
-}
-
 const ObjetoPersona1: Persona = {
   nombre: "Elias",
   apellido: "Sandoval",
   edad: 9,
   sexo: "Masculino",
 };
+console.log(ObjetoPersona1);
 
 const ObjetoPersona2 = {
   ...ObjetoPersona1,
