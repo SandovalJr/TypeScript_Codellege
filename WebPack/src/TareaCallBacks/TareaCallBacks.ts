@@ -59,3 +59,19 @@ const CentroEstudios = [
 		Nombre: 'Salud',
 	},
 ];
+
+/********Problemas**********
+ 1.-Aplicar Interfaces a cada Arreglo
+
+ 2.- Nombre de la carrera en la cual estudia el alumno con id 2
+
+ 3.- Nombre del centro a la cual pertenece la carrera Nutricion
+
+ 4.- Nombre del centro al cual pertenece la carrera del alumno Victor Lemus.
+
+
+ Nota: cree las funciones necesarias, implementado callbacks como en el ejemplo del salario.
+        Aunque en los problemas maneje un  dato objetivo, tiene que tener validación para
+        los casos en el que el dato no exista
+
+******************/
