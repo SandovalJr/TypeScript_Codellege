@@ -54,7 +54,7 @@ const Carrera: Array<Carrera> = [
   },
 ];
 
-const CentroEstudios:Array<CentroEstudios> = [
+const CentroEstudios: Array<CentroEstudios> = [
   {
     id: 1,
     Nombre: "Ciencias y tecnologias",
@@ -66,7 +66,7 @@ const CentroEstudios:Array<CentroEstudios> = [
 ];
 
 /********Problemas**********
- 1.-Aplicar Interfaces a cada Arreglo
+ 1.-Aplicar Interfaces a cada Arreglo [LISTO]
 
  2.- Nombre de la carrera en la cual estudia el alumno con id 2
 
@@ -80,3 +80,27 @@ const CentroEstudios:Array<CentroEstudios> = [
         los casos en el que el dato no exista
 
 ******************/
+
+let getAlumno = (id: number, callback: Function) => {
+  // debugger
+  let alumnodb = Alumnos.find((alum) => alum.id === id);
+
+  if (!alumnodb) {
+    callback(`El alumno con el id: ${id}`);
+  } else {
+    callback(null, alumnodb);
+    console.log(alumnodb);
+  }
+};
+
+let getCarrera = (alumno: Alumnos, callback: Function) => {
+
+    
+};
+
+// INVOCACION DE FUNCIONES
+getAlumno(1, (err: null | string, alumno: Alumnos) => {
+  if (err) {
+    return console.error("No existe el alumno");
+  }
+});
