@@ -175,7 +175,7 @@ let getSalario = (empleado: Persona, callback: Function) => {
 };
 
 // INVOCACION DE FUNCIONES
-getEmpleado(3, (err: null | string, empleado: Persona) => {
+getEmpleado(31, (err: null | string, empleado: Persona) => {
   if (err) {
     return console.error("no existe");
   }

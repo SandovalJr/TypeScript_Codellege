@@ -94,13 +94,31 @@ let getAlumno = (id: number, callback: Function) => {
 };
 
 let getCarrera = (alumno: Alumnos, callback: Function) => {
-
-    
+  let carreraDB = Carrera.find((carrera) => carrera.idCarrera == alumno.id);
+  console.log(carreraDB);
+  if (!carreraDB) {
+    console.error(`No se encontro carrera de el alumno ${alumno.Nombre}`);
+  } else {
+    //   console.log("si entro");
+    callback(null, {
+      Nombre: alumno.Nombre,
+      carrera: carreraDB.carrera,
+    });
+  }
 };
 
 // INVOCACION DE FUNCIONES
-getAlumno(1, (err: null | string, alumno: Alumnos) => {
+getAlumno(2, (err: null | string, alumno: Alumnos) => {
+//   debugger;
   if (err) {
     return console.error("No existe el alumno");
   }
+
+  getCarrera(alumno, (err: null | string, resp: any) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    console.info(`El alumno ${resp.Nombre} estudia la carrera ${resp.carrera}`);
+  });
 });
