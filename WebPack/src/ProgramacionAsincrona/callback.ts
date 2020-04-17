@@ -86,12 +86,33 @@ let Personas: Array<Persona> = [
   },
 ];
 
-const button = document.querySelector("#btnEjecutar");
-button?.addEventListener("click", EliminarUsuarios);
+// const button = document.querySelector("#btnEjecutar");
+// button?.addEventListener("click", EliminarUsuarios);
 
-function EliminarUsuarios() {}
+function EliminarUsuarios(Nombre: string, callback: Function) {
+  console.log(callback);
 
-function MostrarUsuarios() {
+  let longitudInicial = Personas.length;
+
+  let PersonasNuevas = Personas.filter(
+    (persona) => persona.nombre.toLocaleLowerCase() != Nombre
+  );
+
+  if (longitudInicial == Personas.length) {
+    callback(true, Nombre);
+  } else {
+    callback(null, Nombre);
+  }
+
+  console.log(PersonasNuevas);
+}
+
+function MostrarUsuarios(err: string | null, respuesta: boolean) {
+  if (err) {
+    console.error(`el usuario ${respuesta}, no existe`);
+    return;
+  }
+
   const tbody = document.querySelector("#tbody");
   Personas.forEach((Persona) => {
     const tr = document.createElement("tr");
@@ -106,4 +127,66 @@ function MostrarUsuarios() {
   });
 }
 
-MostrarUsuarios();
+let Salario: Array<any> = [
+  {
+    id: 1,
+    salario: 5000,
+  },
+  {
+    id: 2,
+    salario: 4000,
+  },
+  {
+    id: 3,
+    salario: 3456,
+  },
+  {
+    id: 4,
+    salario: 6645,
+  },
+];
+
+let getEmpleado = (id: number, callback: Function) => {
+  // debugger
+  let empleadodb = Personas.find((persona) => persona.id === id);
+  // false or undefined
+  if (!empleadodb) {
+    callback("no existe un empleado con id " + id);
+  } else {
+    callback(null, empleadodb);
+  }
+};
+
+let getSalario = (empleado: Persona, callback: Function) => {
+  let salarioDB = Salario.find((salario) => salario.id === empleado.id);
+
+  // console.log(salarioDB);
+
+  if (!salarioDB) {
+    callback(
+      `no se encontro ningun salario para el usuario: ${empleado.nombre}`
+    );
+  } else {
+    callback(null, {
+      nombre: empleado.nombre,
+      salario: salarioDB.salario,
+    });
+  }
+};
+
+// INVOCACION DE FUNCIONES
+getEmpleado(3, (err: null | string, empleado: Persona) => {
+  if (err) {
+    return console.error("no existe");
+  }
+
+  getSalario(empleado, (err: null | string, resp: any) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    console.info(`El salario de ${resp.nombre} es de ${resp.salario}`);
+  });
+
+  // console.info(empleado);
+});
