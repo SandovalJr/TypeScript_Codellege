@@ -115,6 +115,9 @@ let getCentroEstudios = (idcarrera: number, callback: Function) => {
   let centroEstudioDB = CentroEstudios.find(
     (Nombre) => Nombre.id == carreraNutricion?.idCentroEstudios
   );
+  if (idcarrera != 4) {
+    return;
+  }
 
   if (!centroEstudioDB) {
     console.error("No se encontro ningun centro de estudio");
