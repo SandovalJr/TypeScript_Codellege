@@ -113,12 +113,17 @@ let getCentroEstudios = (idcarrera: number, callback: Function) => {
   );
 
   let centroEstudioDB = CentroEstudios.find(
-    (Nombre) => Nombre.id == carreraNutricion?.idCentroEstudios );
-  console.log(carreraNutricion);
-  console.log(centroEstudioDB);
- 
-  
-  
+    (Nombre) => Nombre.id == carreraNutricion?.idCentroEstudios
+  );
+
+  if (!centroEstudioDB) {
+    console.error("No se encontro ningun centro de salud");
+  } else {
+    callback(null, centroEstudioDB);
+  }
+
+  // console.log(carreraNutricion);
+  // console.log(centroEstudioDB);
 };
 
 // INVOCACION DE FUNCIONES
@@ -138,7 +143,12 @@ getAlumno(2, (err: null | string, alumno: Alumnos) => {
   });
 });
 
-
 // 3.- Nombre del centro a la cual pertenece la carrera Nutricion
 getCentroEstudios(3, (err: null | string, centroestdio: CentroEstudios) => {
+  if (err) {
+    return console.error("No existe el alumno");
+  }
+  console.info(
+    `La carrera de estudios se encuentra en el centro de estudios: ${centroestdio.Nombre}`
+  );
 });
