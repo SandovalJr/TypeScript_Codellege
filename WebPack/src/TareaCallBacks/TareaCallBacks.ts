@@ -70,9 +70,9 @@ const CentroEstudios: Array<CentroEstudios> = [
 
  2.- Nombre de la carrera en la cual estudia el alumno con id 2 [LISTO]
 
- 3.- Nombre del centro a la cual pertenece la carrera Nutricion
+ 3.- Nombre del centro a la cual pertenece la carrera Nutricion [LISTO]
 
- 4.- Nombre del centro al cual pertenece la carrera del alumno Victor Lemus.
+ 4.- Nombre del centro al cual pertenece la carrera del alumno Victor Lemus. [LISTO]
 
 
  Nota: cree las funciones necesarias, implementado callbacks como en el ejemplo del salario.
@@ -117,7 +117,7 @@ let getCentroEstudios = (idcarrera: number, callback: Function) => {
   );
 
   if (!centroEstudioDB) {
-    console.error("No se encontro ningun centro de salud");
+    console.error("No se encontro ningun centro de estudio");
   } else {
     callback(null, centroEstudioDB);
   }
@@ -127,8 +127,13 @@ let getCentroEstudios = (idcarrera: number, callback: Function) => {
 };
 
 // INVOCACION DE FUNCIONES
+
 //  2.- Nombre de la carrera en la cual estudia el alumno con id 2 [LISTO]
-getAlumno(2, (err: null | string, alumno: Alumnos) => {
+// 4.- Nombre del centro al cual pertenece la carrera del alumno Victor Lemus. [LISTO]
+
+// unicamente cambiamos el 4 o 2 dependiendo de lo necesario
+
+getAlumno(4, (err: null | string, alumno: Alumnos) => {
   //   debugger;
   if (err) {
     return console.error("No existe el alumno");
@@ -140,6 +145,15 @@ getAlumno(2, (err: null | string, alumno: Alumnos) => {
       return;
     }
     console.info(`El alumno ${resp.Nombre} estudia la carrera ${resp.carrera}`);
+
+    getCentroEstudios(
+      alumno.idCarrera,
+      (err: null | string, centroestdio: CentroEstudios) => {
+        console.info(
+          `La carrera de ${resp.Nombre} es ${resp.carrera} y se encuentra en el centro de estudios: ${centroestdio.Nombre}`
+        );
+      }
+    );
   });
 });
 
