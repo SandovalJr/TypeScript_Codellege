@@ -68,7 +68,7 @@ const CentroEstudios: Array<CentroEstudios> = [
 /********Problemas**********
  1.-Aplicar Interfaces a cada Arreglo [LISTO]
 
- 2.- Nombre de la carrera en la cual estudia el alumno con id 2
+ 2.- Nombre de la carrera en la cual estudia el alumno con id 2 [LISTO]
 
  3.- Nombre del centro a la cual pertenece la carrera Nutricion
 
@@ -89,13 +89,13 @@ let getAlumno = (id: number, callback: Function) => {
     callback(`El alumno con el id: ${id}`);
   } else {
     callback(null, alumnodb);
-    console.log(alumnodb);
+    // console.log(alumnodb);
   }
 };
 
 let getCarrera = (alumno: Alumnos, callback: Function) => {
   let carreraDB = Carrera.find((carrera) => carrera.idCarrera == alumno.id);
-  console.log(carreraDB);
+  // console.log(carreraDB);
   if (!carreraDB) {
     console.error(`No se encontro carrera de el alumno ${alumno.Nombre}`);
   } else {
@@ -107,9 +107,24 @@ let getCarrera = (alumno: Alumnos, callback: Function) => {
   }
 };
 
+let getCentroEstudios = (idcarrera: number, callback: Function) => {
+  let carreraNutricion = Carrera.find(
+    (carrera) => carrera.idCarrera === idcarrera
+  );
+
+  let centroEstudioDB = CentroEstudios.find(
+    (Nombre) => Nombre.id == carreraNutricion?.idCentroEstudios );
+  console.log(carreraNutricion);
+  console.log(centroEstudioDB);
+ 
+  
+  
+};
+
 // INVOCACION DE FUNCIONES
+//  2.- Nombre de la carrera en la cual estudia el alumno con id 2 [LISTO]
 getAlumno(2, (err: null | string, alumno: Alumnos) => {
-//   debugger;
+  //   debugger;
   if (err) {
     return console.error("No existe el alumno");
   }
@@ -121,4 +136,9 @@ getAlumno(2, (err: null | string, alumno: Alumnos) => {
     }
     console.info(`El alumno ${resp.Nombre} estudia la carrera ${resp.carrera}`);
   });
+});
+
+
+// 3.- Nombre del centro a la cual pertenece la carrera Nutricion
+getCentroEstudios(3, (err: null | string, centroestdio: CentroEstudios) => {
 });
