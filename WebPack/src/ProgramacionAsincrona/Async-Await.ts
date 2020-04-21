@@ -110,7 +110,7 @@ let Salario: Array<Salario> = [
   },
 ];
 
-const getSalario = async (id: number) => {
+const getEmpleado = async (id: number) => {
   const Empleado = Personas.find((persona) => persona.id == id);
 
   if (!Empleado) {
@@ -120,14 +120,30 @@ const getSalario = async (id: number) => {
   }
 };
 
+const getSalario = async (Empleado: Persona) => {
+  const salarioEmpleado = Salario.find((salario) => salario.id == Empleado.id);
+
+  if (!salarioEmpleado) {
+    throw new Error(
+      `El empleado ${Empleado.nombre} no cuenta con salario registrado`
+    );
+  } else {
+    return {
+      nombre: Empleado.nombre,
+      salario: salarioEmpleado.salario,
+    };
+  }
+};
+
 const getInformacion = async (id: number) => {
-  const Empleado = await getSalario(id);
-  console.log(Empleado);
-  
+  const Empleado = await getEmpleado(id);
+  //   console.log(Empleado);
+  const response = await getSalario(Empleado);
+  return `El empleado ${response.nombre} tiene un salario de $${response.salario}`;
 };
 
 
-
+// INVOCO 
 getInformacion(3)
-.then()
-.catch((err:Error)=>  console.log(err.message));
+  .then((mensaje: string) => console.info(mensaje))
+  .catch((err: Error) => console.log(err.message));
