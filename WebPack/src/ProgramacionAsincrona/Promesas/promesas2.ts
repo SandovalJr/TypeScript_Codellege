@@ -19,6 +19,7 @@ let telefonos: Array<any> = [
     tel: 45458485,
   },
 ];
+// CREAMOS PROMESAS
 
 const ObtenerUsuario = (id: number): Promise<any> => {
   return new Promise((res, rej) => {
@@ -40,6 +41,7 @@ const ObtenerTelefono = (id: number): Promise<any> => {
       rej("El tel no existe y es ");
     }
   });
+  
 };
 
 // INVOCAMOS OBTENER USUARIO
