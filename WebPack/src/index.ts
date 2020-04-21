@@ -9,4 +9,4 @@ import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
 // PROGRAMACION ASINCRONA
 // import './ProgramacionAsincrona/callback'
 // import './TareaCallBacks/TareaCallBacks'
-import "./Promesas/promesas";
+import "./ProgramacionAsincrona/Promesas/promesas"
