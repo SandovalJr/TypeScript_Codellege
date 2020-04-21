@@ -97,10 +97,41 @@ const getCarrera = async (alumno: Alumnos) => {
   }
 };
 
+const getCentroEstudio = async (idCarrera: number) => {
+  const SearchCE = CentroEstudios.find((ce) => ce.id == idCarrera);
+  if (!SearchCE) {
+    throw new Error("El centro de estudios no existe");
+  } else {
+    return SearchCE;
+  }
+};
+
+// 2.- Nombre de la carrera en la cual estudia el alumno con id 2 [LISTO]
+const getInformacion = async (id: number) => {
+  const alumno = await getAlumno(id);
+  const carrera = await getCarrera(alumno);
+  //   const centro2 = await getCentroEstudios3(alumno.idCarrera);
+
+  const cestudios = await getCentroEstudio(alumno.idCarrera);
+  return `El alumno ${alumno.Nombre} estudia la carrera ${carrera.carrera} en el centro de estudios ${cestudios.Nombre} `;
+};
+
+// INVOCAMOS
+getInformacion(4)
+  .then((mensaje: string) => console.log(mensaje))
+  .catch((err: Error) => console.error(err.message));
+
+/*****
+  PUNTO 3
+  
+  ******/
+// unicamente punto 3
 const getCentroEstudios3 = async (id: number) => {
   // debugger
   const CarreraCE = Carrera.find((carrera) => carrera.idCarrera == id);
-  const CE = CentroEstudios.find((centroE) => centroE.id == CarreraCE?.idCentroEstudios);
+  const CE = CentroEstudios.find(
+    (centroE) => centroE.id == CarreraCE?.idCentroEstudios
+  );
 
   if (!CE) {
     throw new Error("No existe ningun centro de estudio");
@@ -108,20 +139,6 @@ const getCentroEstudios3 = async (id: number) => {
     return CE;
   }
 };
-
-// 2.- Nombre de la carrera en la cual estudia el alumno con id 2 [LISTO]
-
-const getInformacion = async (id: number) => {
-  const alumno = await getAlumno(id);
-  const carrera = await getCarrera(alumno);
-  return `El alumno ${alumno.Nombre} estudia la carrera ${carrera.carrera}`;
-};
-
-// INVOCAMOS
-getInformacion(2)
-  .then((mensaje: string) => console.log(mensaje))
-  .catch((err: Error) => console.error(err.message));
-
 //  3.- Nombre del centro a la cual pertenece la carrera Nutricion [LISTO]
 const getCEInvocacion = async (id: number) => {
   const centro = await getCentroEstudios3(id);
