@@ -125,6 +125,7 @@ getInformacion(4)
   PUNTO 3
   
   ******/
+
 // unicamente punto 3
 const getCentroEstudios3 = async (id: number) => {
   // debugger
@@ -139,6 +140,7 @@ const getCentroEstudios3 = async (id: number) => {
     return CE;
   }
 };
+
 //  3.- Nombre del centro a la cual pertenece la carrera Nutricion [LISTO]
 const getCEInvocacion = async (id: number) => {
   const centro = await getCentroEstudios3(id);
