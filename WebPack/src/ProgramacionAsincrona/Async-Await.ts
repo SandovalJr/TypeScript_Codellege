@@ -56,8 +56,8 @@
 
 // IMPORTO INTERFAZ
 
-import { Persona } from "../TareaCallBacks/InterfaceHW";
-import { Salario } from "../TareaCallBacks/InterfaceHW";
+import { Persona } from "../Practicas/InterfaceHW";
+import { Salario } from "../Practicas/InterfaceHW";
 let Personas: Array<Persona> = [
   {
     id: 1,
@@ -144,6 +144,6 @@ const getInformacion = async (id: number) => {
 
 
 // INVOCO 
-getInformacion(3)
+getInformacion(2)
   .then((mensaje: string) => console.info(mensaje))
   .catch((err: Error) => console.log(err.message));

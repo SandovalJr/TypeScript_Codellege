@@ -11,4 +11,5 @@ import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
 // import './TareaCallBacks/TareaCallBacks'
 // import "./ProgramacionAsincrona/Promesas/promesas"
 // import './ProgramacionAsincrona/Promesas/promesas2'
-import './ProgramacionAsincrona/Async-Await'
+// import './ProgramacionAsincrona/Async-Await'
+import './Practicas/Async-Await'

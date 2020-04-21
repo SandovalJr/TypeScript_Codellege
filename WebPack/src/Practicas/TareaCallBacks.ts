@@ -1,7 +1,7 @@
 // Importamos las interfaces
-import { Alumnos } from "../TareaCallBacks/InterfaceHW";
-import { Carrera } from "../TareaCallBacks/InterfaceHW";
-import { CentroEstudios } from "../TareaCallBacks/InterfaceHW";
+import { Alumnos } from "./InterfaceHW";
+import { Carrera } from "./InterfaceHW";
+import { CentroEstudios } from "./InterfaceHW";
 
 const Alumnos: Array<Alumnos> = [
   {
