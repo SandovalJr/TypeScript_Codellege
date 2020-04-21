@@ -163,7 +163,7 @@ getAlumno(4, (err: null | string, alumno: Alumnos) => {
 // 3.- Nombre del centro a la cual pertenece la carrera Nutricion
 getCentroEstudios(3, (err: null | string, centroestdio: CentroEstudios) => {
   if (err) {
-    return console.error("No existe el alumno");
+    return console.error("No existe el centro de estudios");
   }
   console.info(
     `La carrera de estudios se encuentra en el centro de estudios: ${centroestdio.Nombre}`

@@ -68,7 +68,7 @@ const CentroEstudios: Array<CentroEstudios> = [
 /*****
 2.- Nombre de la carrera en la cual estudia el alumno con id 2 [LISTO]
 
- 3.- Nombre del centro a la cual pertenece la carrera Nutricion []
+ 3.- Nombre del centro a la cual pertenece la carrera Nutricion [LISTO]
 
  4.- Nombre del centro al cual pertenece la carrera del alumno Victor Lemus. 
 ******/
@@ -97,7 +97,17 @@ const getCarrera = async (alumno: Alumnos) => {
   }
 };
 
+const getCentroEstudios3 = async (id: number) => {
+  // debugger
+  const CarreraCE = Carrera.find((carrera) => carrera.idCarrera == id);
+  const CE = CentroEstudios.find((centroE) => centroE.id == CarreraCE?.idCentroEstudios);
 
+  if (!CE) {
+    throw new Error("No existe ningun centro de estudio");
+  } else {
+    return CE;
+  }
+};
 
 // 2.- Nombre de la carrera en la cual estudia el alumno con id 2 [LISTO]
 
@@ -111,3 +121,13 @@ const getInformacion = async (id: number) => {
 getInformacion(2)
   .then((mensaje: string) => console.log(mensaje))
   .catch((err: Error) => console.error(err.message));
+
+//  3.- Nombre del centro a la cual pertenece la carrera Nutricion [LISTO]
+const getCEInvocacion = async (id: number) => {
+  const centro = await getCentroEstudios3(id);
+  return `La carrera de nutricion pertenece al centro de estudios de: ${centro.Nombre}`;
+};
+
+getCEInvocacion(3)
+  .then((mensaje: string) => console.log(mensaje))
+  .catch((error: Error) => console.error(error));
