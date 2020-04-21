@@ -19,7 +19,7 @@ let telefonos: Array<any> = [
     tel: 45458485,
   },
 ];
-// CREAMOS PROMESAS
+// Promesas
 
 const ObtenerUsuario = (id: number): Promise<any> => {
   return new Promise((res, rej) => {
