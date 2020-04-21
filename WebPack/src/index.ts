@@ -10,4 +10,5 @@ import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
 // import './ProgramacionAsincrona/callback'
 // import './TareaCallBacks/TareaCallBacks'
 // import "./ProgramacionAsincrona/Promesas/promesas"
-import './ProgramacionAsincrona/Promesas/promesas2'
+// import './ProgramacionAsincrona/Promesas/promesas2'
+import './ProgramacionAsincrona/Async-Await'
