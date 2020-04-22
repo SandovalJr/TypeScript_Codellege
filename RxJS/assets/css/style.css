@@ -1,0 +1,16 @@
+*,
+html,
+body {
+  font-family: sans-serif;
+  color: white;
+}
+
+body {
+  text-align: center;
+  background-color: #1f3144;
+/* background-image: url("C:\Users\2RJ27LA_RS5\Desktop\Codellege\TypeScript\RxJS\assets\img\img.png");} */
+}
+h1 {
+  font-weight: lighter;
+}
+
