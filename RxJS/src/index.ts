@@ -1,8 +1,9 @@
-import { Observer, of, range, interval } from "rxjs";
+import { Observer, range, from, fromEvent } from "rxjs";
 import { displayLog } from "./utils/utlis";
 import { Empleado } from "../src/interfaces/interfaces";
+import { map } from "rxjs/operators";
 /*****
-OBSERVABLE USANDO RANGE 
+OBSERVABLE USANDO TIMER 
 ******/
 
 const observer: Observer<any> = {
@@ -11,12 +12,11 @@ const observer: Observer<any> = {
   complete: () => console.warn("[Complete]"),
 };
 
-const src$ = of(1, 2, 3, 4, 5);
+range(1, 5)
+  .pipe(map((valor) => valor * 10))
+  .subscribe(observer);
 
-// src$.subscribe(observer);
-
-// UTILIZAMOS EL RANGE
-const srcRange = interval(2000);
-displayLog(`Inicio`);
-srcRange.subscribe(observer);
-displayLog(`Final`);
+const keyup$ = fromEvent<KeyboardEvent>(document, "keyup");
+keyup$
+  .pipe(map<KeyboardEvent, string>((event) => event.code))
+  .subscribe(observer);
