@@ -1,4 +1,4 @@
-import { Observable, Subscriber, Observer, interval } from "rxjs";
+import { Observer, of } from "rxjs";
 import { displayLog } from "./utils/utlis";
 
 /*****
@@ -13,18 +13,27 @@ import { displayLog } from "./utils/utlis";
 ******/
 
 const observer: Observer<any> = {
-  next: (value) => displayLog(`[Next]:  ${JSON.stringify(value)}`),
+  next: (value) => displayLog(`[Next]:  ${JSON.stringify(value*10)}`),
   error: (err) => console.error("[Error Observable] ", err.name),
   complete: () => console.warn("[Complete]"),
 };
 
-const intervalo$ = new Observable((subscriber) => {
-  let count = 0;
-  const interval = setInterval(() => {
-    count++;
-    subscriber.next(count);
-  }, 1000);
-});
+// const obs$ = of<number>(1,2,3,4,5,6)
+
+// const obs$ = of<any>(
+//   1,
+//   "sandoval",
+//   () => {
+//     console.log("x");
+//   },
+//   {
+//     a: 1,
+//     b: 2,
+//   },
+//   5
+// );
 
 
-intervalo$.subscribe(observer)
+const obs$ = of<any>(...[1,2,3,4,5,6])
+
+obs$.subscribe(observer);
