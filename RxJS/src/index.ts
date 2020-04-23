@@ -1,8 +1,8 @@
-import { Observer, fromEvent } from "rxjs";
+import { Observer, of, range } from "rxjs";
 import { displayLog } from "./utils/utlis";
 import { Empleado } from "../src/interfaces/interfaces";
 /*****
-OBSERVABLE USANDO FROM EVENT
+OBSERVABLE USANDO RANGE 
 ******/
 
 const observer: Observer<any> = {
@@ -11,16 +11,11 @@ const observer: Observer<any> = {
   complete: () => console.warn("[Complete]"),
 };
 
-const src1$ = fromEvent<MouseEvent>(document, "click");
-const src2$ = fromEvent<KeyboardEvent>(document, "keyup");
-// src1$.subscribe((value) => {
-//   console.log(`[click: ] x = ${value.x}  y = ${value.y}`);
-// });
+const src$ = of(1, 2, 3, 4, 5);
 
-src1$.subscribe(({ x, y }) => {
-  console.log(x, y);
-});
+// src$.subscribe(observer);
 
-src2$.subscribe(({ keyCode }) => {
-  console.log(keyCode);
-});
+// UTILIZAMOS EL RANGE
+const srcRange = range(1, 10);
+
+srcRange.subscribe(observer);
