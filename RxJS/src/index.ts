@@ -1,4 +1,5 @@
-import { Observable, Subscriber } from "rxjs";
+import { Observable, Subscriber, Observer, interval } from "rxjs";
+import { displayLog } from "./utils/utlis";
 
 /*****
  * Crear un obserbal
@@ -11,30 +12,19 @@ import { Observable, Subscriber } from "rxjs";
 2- Manera de crear un observable
 ******/
 
-const obs$ = new Observable((subscriber) => {
-  subscriber.next("Hola mundo");
-  subscriber.next("Hola JC");
-  subscriber.next("Hola sandoval");
-  subscriber.next({ a: 2, b: 5 });
+const observer: Observer<any> = {
+  next: (value) => displayLog(`[Next]:  ${JSON.stringify(value)}`),
+  error: (err) => console.error("[Error Observable] ", err.name),
+  complete: () => console.warn("[Complete]"),
+};
 
-  //   causando un error
-  // const a: any = undefined;
-  // a.nombre = "sandovaljr";
-
-  // const b: any = undefined;
-  // b.apellid = "Escobedo";
-
-  //   subscriber.next("paso error");
-
-  // complete no se puede enviar ningun parametro por lo cual no recibe nada
-  subscriber.complete();
+const intervalo$ = new Observable((subscriber) => {
+  let count = 0;
+  const interval = setInterval(() => {
+    count++;
+    subscriber.next(count);
+  }, 1000);
 });
 
-obs$.subscribe(
-  // INFORMACION
-  (value) => console.log("[Next] ", value),
-  // ERROR
-  (err) => console.error("[Error Observable] ", err.name),
-  // Finalizado
-  () => console.warn("[Complete]")
-);
+
+intervalo$.subscribe(observer)
