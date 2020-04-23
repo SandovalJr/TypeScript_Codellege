@@ -1,18 +1,26 @@
-import { Observer, of, from } from "rxjs";
+import { Observer, fromEvent } from "rxjs";
 import { displayLog } from "./utils/utlis";
-
+import { Empleado } from "../src/interfaces/interfaces";
 /*****
-OBSERVABLE USANDO FROM
+OBSERVABLE USANDO FROM EVENT
 ******/
 
 const observer: Observer<any> = {
-  next: (value) => displayLog(`[Next]:  ${JSON.stringify(value)}`),
+  next: (value) => console.log(`[Next]:  ${JSON.stringify(value)}`),
   error: (err) => console.error("[Error Observable] ", err.name),
   complete: () => console.warn("[Complete]"),
 };
 
-// el from si entra a los valores que tiene ese arreglo
+const src1$ = fromEvent<MouseEvent>(document, "click");
+const src2$ = fromEvent<KeyboardEvent>(document, "keyup");
+// src1$.subscribe((value) => {
+//   console.log(`[click: ] x = ${value.x}  y = ${value.y}`);
+// });
 
-const obs$ = from([3, 2, 1, 4, 5, 6]);
+src1$.subscribe(({ x, y }) => {
+  console.log(x, y);
+});
 
-obs$.subscribe(observer);
+src2$.subscribe(({ keyCode }) => {
+  console.log(keyCode);
+});
