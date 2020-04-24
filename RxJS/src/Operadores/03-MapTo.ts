@@ -1,6 +1,6 @@
 import { Observer, fromEvent } from "rxjs";
-import { displayLog } from "./utils/utlis";
-import { Empleado } from "../src/interfaces/interfaces";
+import { displayLog } from "../utils/utlis";
+import { Empleado } from "../interfaces/interfaces";
 import { map, pluck, mapTo } from "rxjs/operators";
 /*****
 OBSERVABLE USANDO Map To 
