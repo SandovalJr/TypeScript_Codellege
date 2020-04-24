@@ -1,6 +1,6 @@
 import { Observer, of, from } from "rxjs";
-import { displayLog } from "./utils/utlis";
-import { Empleado } from "../src/interfaces/interfaces";
+import { displayLog } from "../utils/utlis";
+import { Empleado } from "../interfaces/interfaces";
 /*****
 OBSERVABLE USANDO FROM
 ******/
