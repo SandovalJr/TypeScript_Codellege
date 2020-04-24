@@ -1,6 +1,6 @@
-import { Observer, range, from } from "rxjs";
+import { Observer, range, from, fromEvent } from "rxjs";
 import { displayLog } from "./utils/utlis";
-import { filter, pluck } from "rxjs/operators";
+import { filter, pluck, map } from "rxjs/operators";
 import { Empleado2 } from "./interfaces/interfaces";
 /*****
 OBSERVABLE USANDO Filter
@@ -64,13 +64,28 @@ const observerEmpleados: Observer<any> = {
 };
 
 const obs$ = from(empleados);
-obs$
-  .pipe(filter((v) => v.puesto == "Developer Sr"))
-  .subscribe(observerEmpleados);
 
-obs$
-  .pipe(filter((v) => v.puesto != "Developer Sr"))
-  .subscribe(observerEmpleados);
+// obs$
+//   .pipe(filter((v) => v.puesto == "Developer Sr"))
+//   .subscribe(observerEmpleados);
 
-obs$.pipe(filter((v) => v.edad > 21)).subscribe(observerEmpleados);
+// obs$
+//   .pipe(filter((v) => v.puesto != "Developer Sr"))
+//   .subscribe(observerEmpleados);
+
+// obs$.pipe(filter((v) => v.edad > 21)).subscribe(observerEmpleados);
 // obs$.pipe(pluck(('puesto'))).subscribe(observerEmpleados);
+
+/*****
+=================================================================================
+******/
+
+// Solo deja pasar al valor si es Enter
+const keyup$ = fromEvent<KeyboardEvent>(document, "keyup");
+
+keyup$
+  .pipe(
+    pluck("code"),
+    filter((v) => v == "Enter")
+  )
+  .subscribe(observerEmpleados);
