@@ -73,3 +73,4 @@ obs$
   .subscribe(observerEmpleados);
 
 obs$.pipe(filter((v) => v.edad > 21)).subscribe(observerEmpleados);
+// obs$.pipe(pluck(('puesto'))).subscribe(observerEmpleados);
