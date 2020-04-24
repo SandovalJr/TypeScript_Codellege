@@ -1,26 +1,60 @@
-import { Observer, range, from, fromEvent } from "rxjs";
-import { displayLog } from "./utils/utlis";
-import { filter, pluck, map, tap } from "rxjs/operators";
-import { Empleado2 } from "./interfaces/interfaces";
+import { lorem, displayLog } from "./utils/utlis";
+import { fromEvent } from "rxjs";
+import { pluck, map, tap, filter } from "rxjs/operators";
+
+const ul = document.createElement("ul");
+ul.classList.add("navbar");
+
+const ArrayLiks: Array<string> = [
+  "Inicio",
+  "Sobre Nosotros",
+  "Productos",
+  "Contacto",
+];
+
+ArrayLiks.forEach((link) => {
+  const li = document.createElement("li");
+  li.innerText = link;
+  ul.appendChild(li);
+});
+
+document.querySelector("body")?.insertBefore(ul, document.querySelector("h1"));
+
+const progressBar = document.createElement("div");
+progressBar.classList.add("progress-bar");
+
+document
+  .querySelector("body")
+  ?.insertBefore(progressBar, document.querySelector("h1"));
+
+const p = document.createElement("p");
+p.innerText = lorem;
+
+displayLog(p.innerText);
+
 /*****
-OBSERVABLE USANDO Tap
+SCROLL 
 ******/
 
-const observer: Observer<any> = {
-  next: (value) => displayLog(`[Next]: ${value}`),
-  error: (err) => console.error("[Error Observable] ", err.name),
-  complete: () => console.warn("[Complete]"),
+const calcularScroll = (event: any) => {
+  const { scrollTop, scrollHeight, clientHeight } = event;
+  // console.log(scrollTop, scrollHeight, clientHeight);
+  return (scrollTop / (scrollHeight - clientHeight)) * 100;
 };
 
-const numero$ = range(1, 7);
+const scroll$ = fromEvent(document, "scroll");
 
-numero$
+scroll$
   .pipe(
-    tap((x) => console.log("antes", x)),
-    map((val) => val * 10),
-    tap({
-      next: (valor) => console.log("despues", valor),
-      complete: () => console.log("se termino todo"),
-    })
+    pluck("target", "documentElement"),
+    map((eventFilter: any) => calcularScroll(eventFilter)),
+    tap((v) => console.log(v))
   )
-  .subscribe(observer);
+  .subscribe((porcentaje) => {
+    if (porcentaje > 1) {
+      ul.style.display = "none";
+    } else {
+      ul.style.display = "flex";
+    }
+    progressBar.style.width = `${porcentaje}%`;
+  });
