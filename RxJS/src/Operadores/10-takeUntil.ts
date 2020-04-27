@@ -1,11 +1,6 @@
 import { Observer, fromEvent, of, interval } from "rxjs";
-import { displayLog } from "./utils/utlis";
+import { displayLog } from "../utils/utlis";
 import {
-  tap,
-  first,
-  map,
-  subscribeOn,
-  takeWhile,
   takeUntil,
 } from "rxjs/operators";
 
